@@ -34,9 +34,17 @@
         "tailwindcss": "^2.2.7"
     },
     "dependencies": {
+        "@headlessui/react": "^1.4.0",
         "@inertiajs/inertia": "^0.10.0",
         "@inertiajs/inertia-react": "^0.7.0",
+        "@material-tailwind/react": "0.3.4",
+        "@tailwindcss/forms": "^0.3.3",
         "laravel-echo": "^1.11.0",
-        "pusher-js": "^7.0.3"
+        "pusher-js": "^7.0.3",
+        "react-hot-toast": "^2.0.0",
+        "react-icons": "^4.2.0",
+        "sweetalert2": "^11.0.20",
+        "sweetalert2-react-content": "^4.1.1",
+        "swiper": "^6.8.0"
     }
 }
