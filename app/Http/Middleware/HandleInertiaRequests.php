@@ -42,6 +42,7 @@ class HandleInertiaRequests extends Middleware
                 'reg_status' => fn () => $request->session()->get('reg_status'),
             ],
             'asset' => asset('/img'),
+            'base_url' => url(''),
         ]);
     }
 }

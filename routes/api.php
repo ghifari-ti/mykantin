@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/changeorder', [\App\Http\Controllers\Api\StatusController::class, 'changeOrder']);
+Route::post('/getorder', [\App\Http\Controllers\Api\StatusController::class, 'getOrder']);
+Route::post('/sendchat', [\App\Http\Controllers\Api\ChatController::class, 'test']);

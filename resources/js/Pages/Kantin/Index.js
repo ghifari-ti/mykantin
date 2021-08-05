@@ -1,9 +1,22 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "@inertiajs/inertia-react";
 import ListMenu from "./ListMenu";
 import {MdKeyboardArrowLeft, MdStar} from "react-icons/md";
+import {Button} from "@material-tailwind/react";
+import Checkout from "./Checkout";
+import {Transition} from "@headlessui/react";
 
 const Index = ()=>{
+    const [item, setItem] = useState({})
+    const [trigger, setTrigger] = useState(false)
+    const [checkout, setCheckout] = useState(false)
+    const [sumItem, setSumItem] = useState(0)
+
+    useEffect(()=>{
+        setSumItem(Object.keys(item).length)
+        console.log(sumItem)
+    },[trigger])
+
     return (
         <>
             <div className="flex justify-center">
@@ -38,10 +51,22 @@ const Index = ()=>{
                         </div>
                     </div>
                     <div className="mt-5 mx-5">
-                        <ListMenu />
+                        <ListMenu item={item} setItem={setItem} trigger={trigger} setTrigger={setTrigger}/>
                     </div>
                 </div>
             </div>
+            {sumItem > 0 ? <div className="fixed bottom-10 left-0 right-0">
+                <div className="flex justify-center">
+                    <Button color="blue" onClick={() => setCheckout(!checkout)}>Checkout</Button>
+                </div>
+            </div>: ''}
+            <div>
+                <div>
+                        {checkout? <Checkout checkout={checkout} setCheckOut={setCheckout} item={item} />: ''}
+                </div>
+            </div>
+
+
         </>
     )
 }

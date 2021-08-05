@@ -1,15 +1,20 @@
 import {Fragment, useEffect, useRef, useState} from "react";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import {Icon, InputIcon} from "@material-tailwind/react";
-import ListKantin from "./ListKantin";
-import ListPromo from "./ListPromo";
 import {Link, usePage} from "@inertiajs/inertia-react";
 import {MdHistory, MdPerson, MdStar} from "react-icons/md";
 import {Menu, Transition } from "@headlessui/react";
+import ListKantin from "./ListKantin";
+import ListPromo from "./ListPromo";
 
 
 const Index = ()=>{
     const props = usePage().props
+
+    function changePlace(e)
+    {
+        setDataOrder({...dataOrder, tempat: e.state.value()})
+    }
 
     return (
         <>
@@ -52,7 +57,9 @@ const Index = ()=>{
                                 </Menu>
                             <div className="relative inline-block text-left">
                                 <div className="inline-flex justify-center w-full px-1 py-2 text-sm font-medium text-white rounded-md focus:outline-none">
-                                    <MdHistory size={30} />
+                                    <Link href="/app/history">
+                                        <MdHistory size={30} />
+                                    </Link>
                                 </div>
                             </div>
                             <div className="relative inline-block text-left">
@@ -78,6 +85,7 @@ const Index = ()=>{
                             </div>
                             <input type="text" name="price" id="price"
                                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                                   onChange={changePlace}
                                    placeholder="Mau diantar kemana?"/>
                         </div>
 

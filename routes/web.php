@@ -17,13 +17,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/app', [\App\Http\Controllers\BaseController::class, 'index']);
-Route::get('/app/register', [\App\Http\Controllers\BaseController::class, 'register']);
-Route::post('/app/register', [\App\Http\Controllers\AuthController::class, 'register']);
-Route::post('/app/login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::get('/app/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
-Route::get('/app/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/app/kantin', [App\Http\Controllers\HomeController::class, 'kantin'])->name('kantin');
+Route::prefix('app')->group(function(){
+    Route::get('/', [\App\Http\Controllers\BaseController::class, 'index']);
+    Route::get('/register', [\App\Http\Controllers\BaseController::class, 'register']);
+    Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+    Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('/kantin', [App\Http\Controllers\HomeController::class, 'kantin']);
+    Route::get('/history', [\App\Http\Controllers\HomeController::class, 'history']);
+    Route::get('/otpcheck/{id}', [\App\Http\Controllers\AuthController::class, 'checkOtp']);
+    Route::post('/otpcheck', [\App\Http\Controllers\AuthController::class, 'verifyOtp']);
+    //Order process
+    Route::post('/reqorder', [\App\Http\Controllers\OrderController::class, 'reqOrder']);
+    Route::get('/reqorder', [\App\Http\Controllers\OrderController::class, 'testComponent']);
+    Route::post('/finishorder', [\App\Http\Controllers\OrderController::class, 'finishOrder']);
+    /*Route::get('/waitdelivery', [\App\Http\Controllers\OrderController::class, 'waitDelivery']);
+    Route::get('/waitprocess', [\App\Http\Controllers\OrderController::class, 'waitProcess']);*/
+
+});
+
+
+
+
 
 
 Route::get('/test', function (){

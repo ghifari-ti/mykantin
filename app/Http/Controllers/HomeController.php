@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -30,5 +32,13 @@ class HomeController extends Controller
     public function kantin()
     {
         return Inertia::render('Kantin/Index');
+    }
+
+    public function history()
+    {
+        $order = Order::where('user_id', Auth::id())->get();
+        return Inertia::render('History/Index', [
+            'order' => $order
+        ]);
     }
 }

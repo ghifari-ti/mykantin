@@ -1,0 +1,22 @@
+.rcw-conversation-container > .rcw-header {
+    background-color: dodgerblue;
+}
+
+#app > div.h-screen.w-screen.bg-blue-500 > div > div > div.w-96.md\:w-full.h-72.bg-white.rounded.px-5.py-3 > div > div.rcw-widget-container > div.rcw-conversation-container.active > div.rcw-header > button {
+    background-color: dodgerblue;
+}
+
+#messages {
+    height: 500px !important;
+}
+@media screen and (max-width: 800px) {
+    #app > div.h-screen.w-screen.bg-blue-500 > div > div > div.w-96.md\:w-full.h-72.bg-white.rounded.px-5.py-3 > div > div.rcw-widget-container > div.rcw-conversation-container.active {
+        display: inline-flex;
+        flex-direction: column;
+        height: 80% !important;
+    }
+}
+
+
+.rcw-message > .rcw-response {
+}
